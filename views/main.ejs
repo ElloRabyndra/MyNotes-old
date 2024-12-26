@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Notebook</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Righteous&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"/>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <header class="bg-secondary fixed top-0 left-0 w-full flex items-center py-2 z-10">
+      <div class="container w-full">
+        <div class="flex justify-between items-center"> 
+          <div class="lg:px-20">
+            <a href="/main/<%= userId %>/<%= username %>" class="block text-2xl font-bold py-4 hover:scale-105 transition duration-300">
+              My <span class="text-main">Notes</span>
+            </a>
+          </div>
+          <div class="flex items-center gap-4 lg:px-10">
+            <p class="text-lg font-bold bg-highlight px-4 py-1 rounded-3xl"><%= username %></p>
+            <!-- Profile Page -->
+            <a href="/profile/<%= userId %>" class="hidden justify-center items-center text-4xl font-bold hover:text-main transition duration-300 md:flex">
+              <i class='bx bxs-user'></i>
+            <!-- Profile Button -->
+            <a id="profile-button" class="flex justify-center items-center text-4xl font-bold hover:text-main transition duration-300 md:hidden">
+              <i class='bx bxs-user'></i>
+            </a>
+          </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Side Nav -->
+    <nav id="side-nav" class="fixed w-[75%] top-0 bottom-0 right-0 bg-secondary shadow-2xl py-4 z-50 hidden">
+      <ul class="flex-col gap-2 text-white font-semibold">
+        <li class="justify-self-end px-8">
+          <button id="nav-close-button" name="nav-close-button" type="button" class="text-2xl font-normal">
+            <svg class="h-9 w-9" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#fbbf24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </li>
+        <li class="border-b-2 border-main hover:text-main transition duration-300"><a class="block p-4" href="/profile/<%= userId %>">Profile</a></li>
+        <li class="border-b-2 border-main hover:text-main transition duration-300"><a class="block p-4" href="/main/<%= userId %>/<%= username %>">All</a></li>
+        <li class="border-b-2 border-main hover:text-main transition duration-300"><a class="block p-4" href="/pinned/<%= userId %>/<%= username %>">Pinned</a></li>
+        <li class="border-b-2 border-main hover:text-main transition duration-300"><a class="block p-4" href="/logout">Logout</a></li>
+      </ul>
+    </nav>
+    <!-- Navbar -->
+
+    <!-- Menu Section -->
+    <section class="pt-24" id="menu">
+      <div class="w-full container flex justify-center sm:justify-start">
+        <div class="px-20 mt-4">
+          <h3 class="text-xl font-bold">Your Notes</h3>
+          <div class="mt-2">
+            <div class="flex">
+              <a href="/main/<%= userId %>/<%= username %>" class="block w-28 text-main text-center text-lg font-semibold border-b-4 border-b-main">All</a>
+              <a href="/pinned/<%= userId %>/<%= username %>" class="block w-28 text-center text-lg font-semibold border-b-4">Pinned</a>
+            </div>
+            <a href="/add/<%= userId %>/<%= username %>" class="block mt-4 bg-main w-56 text-xl font-bold text-center p-2 rounded-xl hover:bg-amber-500 transition duration-300">Add Notes</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Menu Section -->
+
+
+    <!-- All Notes List -->
+     <section>
+      <div class="w-full container">
+        <div class="sm:px-20 mt-4">
+          <% if(notes.length==0) { %>
+            <!-- Empty Notes -->
+          <div class="w-full flex justify-center items-center">
+            <div class="lg:w-3/4 flex flex-wrap">
+              <div class="lg:w-1/2">
+                <figure class="w-3/4 sm:w-4/5 mx-auto">
+                  <img src="/asset/note.png" class="w-full">
+                </figure>
+              </div>
+              <div class="lg:w-1/2 flex justify-center items-center mx-auto">
+                <h3 class="text-xl md:text-3xl text-center font-bold mt-4 lg:-mt-4 xl:-ml-24">You Don't Have Any <span class="text-main">Notes</span></h3>
+              </div>
+            </div>
+          </div>
+          <% } else { %>
+            <!-- Notes List -->
+          <div class="w-full flex flex-wrap gap-8 justify-center sm:justify-start mt-8 lg:mt-6 pb-16">
+            <!-- Looping Notes -->
+            <% notes.forEach((note, i) => { %>
+            <div class="bg-secondary w-72 sm:w-56 lg:w-72 max-h-52 min-h-56 rounded-2xl shadow hover:ring-1 ring-main transition duration-300">
+              <div class="px-6">
+                <div class="flex justify-between pt-4">
+                  <a href="/view/<%= userId %>/<%= note.id_notes %>/<%= username %>" class=" font-semibold bg-main px-4 py-1 rounded-full hover:bg-amber-500 transition duration-300">Notes <%= i+1 %></a>
+                  <div class="flex items-center gap-2 text-main text-xl">
+                    <form method="POST" action="/pinned/<%= userId %>/<%= note.id_notes %>/<%= username %>">
+                      <button type="submit"><i class="bx bx-pin hover:text-amber-500 transition duration-300"></i></button>
+                    </form>
+                    <a href="/update/<%= userId %>/<%= note.id_notes %>/<%= username %>"><i class="bx bx-edit hover:text-amber-500 transition duration-300"></i></a>
+                    <form method="POST" action="/delete/<%= userId %>/<%= note.id_notes %>/<%= username %>">
+                      <button type="submit"><i class="bx bx-trash hover:text-amber-500 transition duration-300"></i></button>
+                    </form>
+                  </div>
+                </div>
+                <a href="/view/<%= userId %>/<%= note.id_notes %>/<%= username %>" class="block text-xl font-bold mt-4 truncate"><%= note.tittle %></a>
+                <p class="mt-2 line-clamp-4">
+                  <% if(note.content=="") { %>
+                    Empty Notes
+                  <% } else { %>
+                    <%= note.content %>
+                  <% } %>
+                </p>
+              </div>
+            </div>
+            <% }); %>
+          </div>
+          <% } %>
+        </div>
+      </div>
+     </section>
+    <!-- All Notes List -->
+     <script src="/js/script.js"></script>
+  </body>
+</html>

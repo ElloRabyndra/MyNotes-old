@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Notebook</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Righteous&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"/>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <div class="">
+      <!-- Side Bar -->
+       <nav>
+        <div class="hidden fixed md:block bg-secondary font-bold h-screen w-56">
+          <a href="/main/<%= userId %>/<%= username %>" class="block p-4 text-3xl">My <span class="text-main">Notes</span></a>
+          <ul class="text-white text-lg">
+            <li class="border-b-2 border-main hover:text-main transition duration-300"><a class="block p-4" href="/main/<%= userId %>/<%= username %>">All</a></li>
+            <li class="border-b-2 border-main hover:text-main transition duration-300"><a class="block p-4" href="/pinned/<%= userId %>/<%= username %>">Pinned</a></li>
+            <li class="border-b-2 border-main hover:text-main transition duration-300"><a class="block p-4" href="/logout">Logout</a></li>
+          </ul>
+        </div>
+       </nav>
+      <!-- Edit Profile -->
+      <section class="flex-shrink">
+        <div class="container pt-10">
+          <div class="mt-4 min-h-[80vh] flex items-center">
+            <div class="w-full px-4 mt-8 pb-16">
+              <form method="POST" action="/edit-profile/<%= userId %>">
+                <div class=" bg-secondary w-full md:w-72 lg:w-[500px] xl:w-[800px] mx-auto min-h-full rounded-2xl shadow has-[:focus]:ring-1 ring-main transition duration-300">
+                  <div class="px-6">
+                    <div class="py-6">
+                      <div class="flex items-center gap-4">
+                        <a href="/main/<%= userId %>/<%= username %>" class="text-2xl font-semibold bg-main px-6 py-1 rounded-full hover:bg-amber-500 transition duration-300"><i class="bx bx-arrow-back"></i></a>
+                        <h2 class="bg-transparent text-2xl font-bold">Edit Profile</h2>
+                      </div>
+                      <div class="w-full mt-6">
+                        <input type="text" name="username" placeholder="Username" autocomplete="off" value="<%= username %>" required class="block w-full bg-transparent outline-none p-2 mt-1 border-b border-b-white focus-within:border-b-main">
+                      </div>
+                      <div class="w-full mt-6">
+                        <input type="password" name="oldPassword" placeholder="Old Password" class="block w-full bg-transparent outline-none p-2 mt-1 border-b border-b-white focus-within:border-b-main">
+                      </div>
+                      <div class="w-full mt-6">
+                        <input type="password" name="newPassword" placeholder="New Password" class="block w-full bg-transparent outline-none p-2 mt-1 border-b border-b-white focus-within:border-b-main">
+                      </div>
+                      <div class="w-full mt-6">
+                        <input type="password" name="passwordConfirm" placeholder="Password Confirm" class="block w-full bg-transparent outline-none p-2 mt-1 border-b border-b-white focus-within:border-b-main">
+                      </div>
+                      <!-- Alert -->
+                      <% if(message) { %>
+                        <div class="mt-6">
+                          <% if(message == "Update successful!") { %>
+                          <p class="w-full text-green-400"><%= message %></p>
+                          <% } else {%>
+                          <p class="w-full text-red-400"><%= message %></p>
+                          <% } %>
+                        </div>
+                        <% } %>
+                      <!-- Alert -->
+                      <button type="submit" class="block w-full mt-6 font-bold bg-main px-8 py-3 rounded-2xl active:bg-amber-500 transition duration-300">Save</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+       </section>
+    </div>
+
+     <script src="/js/script.js"></script>
+  </body>
+</html>
