@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 26 Des 2024 pada 20.09
+-- Waktu pembuatan: 26 Des 2024 pada 20.51
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.2.12
 
@@ -42,8 +42,7 @@ CREATE TABLE `notes` (
 INSERT INTO `notes` (`id_notes`, `id_user`, `tittle`, `content`, `pinned`) VALUES
 (1, 1, 'Ello Hari Ini', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet ullam sequi quasi, nesciunt inventore autem velit, doloremque, quia qui officia exercitationem ipsam vitae eligendi numquam ad. Quod mollitia a est.', 0),
 (10, 1, 'Wishlist', 'Rakit PC', 1),
-(12, 1, 'Rencana Belajar', 'React JS', 1),
-(14, 1, 'Produktivitas', '1. Mulai hari dengan segelas air putih.\r\n2. Buat daftar tugas sebelum memulai pekerjaan.\r\n3. Ambil jeda singkat setiap 30 menit.\r\n4. Hindari multitasking.\r\n5. Belajar sesuatu yang baru setiap hari.\r\n', 0);
+(12, 1, 'Rencana Belajar', 'React JS', 1);
 
 -- --------------------------------------------------------
 
@@ -90,7 +89,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `notes`
 --
 ALTER TABLE `notes`
-  MODIFY `id_notes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_notes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`

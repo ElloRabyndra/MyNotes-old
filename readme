@@ -2,6 +2,7 @@ Berikut Adalah Langkah - Langkah Untuk Menjalankan Website My Notes
 
 Penginstalan
 
+- Masuk ke directory project My Notes
 - Pada XAMPP buat lah database baru dengan nama mynotebook
 - Import database mynotebook.sql yang ada di folder database
 - Jika import Berhasil, pada database anda akan ada 2 tabel (User dan Notes)
