@@ -80,7 +80,7 @@ if(notesContainer) {
           <div class="lg:w-3/4 flex flex-wrap">
             <div class="lg:w-1/2">
               <figure class="w-3/4 sm:w-4/5 mx-auto">
-                <img src="/asset/note.png" class="w-full">
+                <img src="../asset/note.png" class="w-full">
               </figure>
             </div>
             <div class="lg:w-1/2 flex justify-center items-center mx-auto">
@@ -159,7 +159,7 @@ if(pinnedNotesContainer) {
           <div class="lg:w-3/4 flex flex-wrap">
             <div class="lg:w-1/2">
               <figure class="w-3/4 sm:w-4/5 mx-auto">
-                <img src="/asset/note.png" class="w-full">
+                <img src="../asset/note.png" class="w-full">
               </figure>
             </div>
             <div class="lg:w-1/2 flex justify-center items-center mx-auto">
