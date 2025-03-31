@@ -58,3 +58,4 @@ My Notes is a web application designed to help users manage their notes efficien
   - **Password**: `123456`
 
 **Congratulations! You can now use My Notes to manage your notes easily!**
+
