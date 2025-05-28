@@ -59,3 +59,23 @@ My Notes is a web application designed to help users manage their notes efficien
 
 **Congratulations! You can now use My Notes to manage your notes easily!**
 
+---
+
+## 📸 Screenshots
+
+Here are some screenshots from the MyNotes:
+
+### Login Page
+![Login Page](screenshot/login.png)
+
+### Notes List
+![Notes List](screenshot/notes.png)
+
+### Edit Note
+![Edit Note](screenshot/edit_note.png)
+
+### Add Note
+![Add Note](screenshot/add_note.png)
+
+### Profile Management
+![Profile Management](screenshot/profile.png)
